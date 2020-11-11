@@ -73,10 +73,10 @@ class _QconvBase(nn.Module):
         f8 = (2*(torch.pow(f_phase2,2)+f_phase2*f_phase1))*self.f_modulus
         f9 = (torch.pow(f_phase1,2)-torch.pow(f_phase2,2))*self.f_modulus
 
-        matrix1 = torch.cat([f1, f2, f3], axis=1)
-        matrix2 = torch.cat([f4, f5, f6], axis=1)
-        matrix3 = torch.cat([f7, f8, f9], axis=1)
-        matrix = torch.cat([matrix1, matrix2, matrix3], axis=0)
+        matrix1 = torch.cat([f1, f2, f3], dim=1)
+        matrix2 = torch.cat([f4, f5, f6], dim=1)
+        matrix3 = torch.cat([f7, f8, f9], dim=1)
+        matrix = torch.cat([matrix1, matrix2, matrix3], dim=0)
         output = self.conv(input, matrix, self.bias, self.stride, self.padding)
 
         if self.activation is not None:
